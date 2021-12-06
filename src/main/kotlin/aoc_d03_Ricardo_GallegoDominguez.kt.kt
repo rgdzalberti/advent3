@@ -82,7 +82,7 @@ fun main() {
     oxygenRating = oxygenRating.removeRange(11,1000)
 
 
-    //We reset the value list
+    //We reset the values list
     values.clear(); file.forEachLine { values.add(it) }
 
     /*
@@ -100,9 +100,9 @@ fun main() {
 
     for (i in 0 until values.size){
         try { file.forEachLine { if (it.get(position).toString() == "1") { One.add(1) } else { Zero.add(0)}}} catch(e:StringIndexOutOfBoundsException){}
-        if (Zero.size >= One.size) {co2Rating = co2Rating + "1"; ZeroB = true} else {co2Rating = co2Rating + "0"}
+        if (One.size < Zero.size && One.size != Zero.size) {co2Rating = co2Rating + "1" } else {co2Rating = co2Rating + "0" ; ZeroB = true }
         try {if (ZeroB == true) {for (i in 0 until values.size) {if (values[i].get(0).toString()=="0") {values.removeAt(i)}}} else {for (i in 0 until values.size) {if (values[i].get(0).toString()=="1") {values.removeAt(i)}}}} catch (e:IndexOutOfBoundsException){}
-        Zero.clear(); One.clear(); ZeroB = false
+        Zero.clear(); Zero.clear(); ZeroB = false
         position++
     }
 
